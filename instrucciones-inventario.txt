@@ -1,0 +1,59 @@
+Proyecto Final: Implementación de un sistema de gestión de inventario
+
+Descripción del proyecto:
+En este proyecto final, crearan un sistema de gestión de inventario utilizando los conceptos y
+algoritmos aprendidos en clase. El objetivo es desarrollar una aplicación que permita llevar un
+control eficiente de los productos en un inventario, realizar búsquedas, ordenar los elementos y
+realizar operaciones básicas de manejo de inventario.
+Contenidos a incluir:
+
+1. Implementación de algoritmos de búsqueda:
+ - Búsqueda lineal para encontrar un producto por su nombre o código.
+ - Búsqueda binaria para buscar productos por su precio en un inventario ordenado.
+
+2. Implementación de algoritmos de ordenamiento:
+ - Bubble Sort para ordenar los productos por su nombre.
+ - Insertion Sort para ordenar los productos por su cantidad en stock.
+
+3. Utilización del módulo numpy.matrix para arrays multidimensionales:
+ - Crear una matriz multidimensional que represente el inventario, con filas correspondientes a
+productos y columnas correspondientes a atributos como nombre, código, precio y cantidad en
+stock.
+ - Realizar operaciones de búsqueda y ordenamiento utilizando esta matriz.
+
+4. Funcionalidades del sistema de gestión de inventario:
+ - Agregar un nuevo producto al inventario con su nombre, código, precio y cantidad en stock.
+ - Modificar los atributos de un producto existente en el inventario.
+ - Eliminar un producto del inventario.
+ - Realizar búsquedas de productos por nombre, código o precio.
+ - Ordenar los productos por nombre o cantidad en stock.
+ - Mostrar el inventario completo.
+
+Sugerencia de Desarrollo:
+1. Diseña y planifica la estructura del sistema de gestión de inventario. Define las clases, funciones
+y estructuras de datos necesarias para implementar las funcionalidades requeridas.
+
+2. Implementa los algoritmos de búsqueda y ordenamiento utilizando los enfoques adecuados
+(búsqueda lineal, búsqueda binaria, bubble sort y insertion sort). Verifica que funcionen
+correctamente con diferentes conjuntos de datos.
+
+3. Utiliza el módulo numpy.matrix para crear la matriz multidimensional que represente el
+inventario. Asegúrate de que los atributos de los productos estén correctamente organizados en la
+matriz.
+
+4. Desarrolla las funcionalidades del sistema de gestión de inventario utilizando las clases, funciones
+y estructuras de datos definidas en el paso 1. Asegúrate de manejar correctamente la inserción,
+modificación, eliminación, búsqueda y ordenamiento de productos.
+
+5. Prueba exhaustivamente tu sistema de gestión de inventario con diferentes escenarios y
+conjuntos de datos. Verifica que las funcionalidades cumplan con los requisitos establecidos y que
+los algoritmos de búsqueda y ordenamiento funcionen correctamente.
+
+6. Documenta tu proyecto final, explicando el diseño y la implementación del sistema de gestión de
+inventario. Incluye ejemplos de uso y capturas de pantalla que demuestren su funcionamiento.
+
+7. Prepara una presentación del proyecto final, donde puedas mostrar y explicar tu sistema de
+gestión de inventario. Destaca las funcionalidades implementadas, los algoritmos utilizados y los
+resultados obtenidos.
+Recuerda que este proyecto final te permitirá aplicar y afianzar tus conocimientos en algoritmos
+de búsqueda, ordenamiento y el uso de matrices multidimensionales. 
