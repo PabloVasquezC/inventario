@@ -1,22 +1,35 @@
 import numpy as np
 from datetime import datetime as dt
+import sys
 
 # FUNCIÓN PRINCIPAL QUE CONTIENE EL PROGRAMA DE GESTION DE INVENTARIO
-def inventario():
+# def inventario():
         
-    print(""" ___________________________________
-|  SISTEMA DE GESTION DE INVENTARIO |
+print(""" ___________________________________________________________________________________________________
+| 
+|  ________    _    ________
+| |  ______|  |_|  |  ______|
+| | |______    _   | |______
+| |______  |  | |  |______  |
+|  ______| |  | |   ______| |
+| |________|  |_|  |________|
+|
 -------------------------------------""")   
-    # VALIDACIÓN USUARIOS
-    usuario = input("|  Ingrese su nombre de usuario: ")
-    nombre_usuarios = input("Agustin","Cristian","Miguel","Nicolas","Pablo")
-    
-    contrasena = input("Ingrese la contraseña para acceder al menu de opciones")
+# VALIDACIÓN USUARIOS
 
-    if usuario in nombre_usuarios and contrasena == "inventario1234":
-        print()
+
+print(f"""|      Ingrese su inacap mail      
+    {input("hola")}|""")
+
+
+contrasena = input("Ingrese la contraseña ")
+usuarios_validos = ("agustin.segovia02@inacapmail.cl","cristian.quintanilla08@inacapmail.cl","Miguel","nicolas.riquelme40@inacapmail.cl","pablo.vasquez41@inacapmail.cl") 
     
-    inventario = np.array([["PRODUCTO","CÓDIGO","TIPO","PRECIO"],["Martillo","115","Manual","5000"],["Serrucho","045","Manual","5500"],["desatornillador","023","Manual","3500"]])
+
+    # if usuario in usuarios_validos and contrasena == "inventario1234":
+    #     print()
+    
+inventario = np.array([["PRODUCTO","CÓDIGO","TIPO","PRECIO"],["Martillo","115","Manual","5000"],["Serrucho","045","Manual","5500"],["desatornillador","023","Manual","3500"]])
     
     # print(inventario)
     
@@ -36,12 +49,12 @@ def inventario():
     # def mostrar_inventario():
     #     print(inventario)
         
-    def mostrar_producto():
+def mostrar_producto():
         return 0    
     
         
         
-inventario()        
+       
         
         
         
