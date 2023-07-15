@@ -2,11 +2,29 @@ import numpy as np
 
 # FUNCIÓN CONTENEDORA DE EL PROGRAMA DE GESTION DE INVENTARIO
 def inventario():
-    inventario_existente = np.array([["PRODUCTO","CÓDIGO","TIPO","PRECIO"],["Martillo","115","Manual","$ 5.000"],["Serrucho","045","Manual","$ 5.500"],["desatornillador","023","Manual","$ 3.500"],["Taladro","015","Electrico","$ 39.990"],["Ingleteadora","078","Electrico","$ 230.000"],["Lijadora","140","Electrico","$ 50.600"]])
-    
-   
+    inventario_existente = np.array([["PRODUCTO","CÓDIGO","TIPO","PRECIO","STOCK"],["Martillo","115","Manual","$ 5.000","100"],["Serrucho","045","Manual","$ 5.500","150"],["Atornillador","023","Manual","$ 3.500","200"],["Taladro","015","Electrico","$ 39.990","150"],["Ingleteadora","078","Electrico","$ 230.000","50"],["Lijadora","140","Electrico","$ 50.600","130"]])
     
     
+    
+    # Copiamos el inventario_existente en otra variable
+    inventario_alineado = inventario_existente.copy()
+
+    # Obtenemos la forma (shape) del array para determinar el número de columnas
+    num_filas, num_columnas = inventario_existente.shape
+
+    # Obtenemos la longitud máxima de cada columna
+    longitud_maxima_por_columna = [max(map(len, inventario_existente[:, i])) for i in range(num_columnas)]
+
+    # Alineamos verticalmente los elementos de cada columna
+    for i in range(num_filas):
+        for j in range(num_columnas):
+            inventario_alineado[i, j] = inventario_existente[i, j].ljust(longitud_maxima_por_columna[j])
+
+    # Convertimos el inventario_alineado en una cadena de texto con formato
+    inventario_alineado_str = np.array2string(inventario_alineado, separator=" | ", formatter={'all': lambda x: f"{x}"},)
+    
+  
+    print(inventario_alineado_str) 
     
     #TIPOGRAFIA INICIO
     print("""                 ________    _    ________    _________    ________    __    __    ________         _______     ________
@@ -44,7 +62,7 @@ def inventario():
         if usuario in usuarios_validos:
             print(" ")
             break
-     
+
     #BUCLE DE VALIDACIÓN DE CONTRASEÑA    
     while True:
         validacion_contrasena = input("""                                                         Ingrese su contraseña
@@ -68,6 +86,7 @@ def inventario():
         return 0
     # print(inventario)
     
+    
     #MENU DE OPCIONES
     while True:
         opciones = input("""                                                                OPCIONES
@@ -80,70 +99,120 @@ def inventario():
 
                                                         Ingresa la función que deseas realizar 
                                                         --> """)
+    
+            
         
         #OPCIÓN 1
         if opciones == "1" :
             print(" ")
-            # OBTENIENDO LA LONGITUD MAXIMA DE CADA COLUMNA
-            ancho_columnas = np.vectorize(len)(inventario_existente).max(axis=0)
-
-            # IMPRESION ALINEADA DE MATRIZ
-            for fila in inventario_existente:
-                fila_alineada = [element.ljust(width) for element, width in zip(fila, ancho_columnas)]
-                print(f'                                                     {"   ".join(fila_alineada)}')
-                print(" ")
             
-            while True:
-                seguir_finalizar = input("""                                                        Deseas realizar otra operación?
+            #ALGORITMOS DE ORDENAMIENTO
+            ordenar_por = input("""                                                             Ver inventario por:
+                                
+                                
+                                                            1.- Orden alfabetico
+                                                            2.- Cantidad en Stock 
+                                                            --> """)
+            
+            if ordenar_por == "1":
+                
+                def bubble_sort(arr, key_idx):
+                    n = len(arr)
+                    for i in range(n):
+                        for j in range(0, n-i-1):
+                            # Comparamos los elementos del array según el índice especificado por key_idx
+                            if arr[j][key_idx] > arr[j+1][key_idx]:
+                                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+                # Creamos una copia del inventario para mantener el original intacto
+                inventario_ordenado = inventario_existente.copy()
+
+                # Obtenemos la lista de productos a ordenar
+                productos_a_ordenar = inventario_ordenado[1:]
+
+                # Ordenamos el inventario alfabéticamente por el nombre del producto (segunda columna)
+                bubble_sort(productos_a_ordenar, key_idx=0)
+
+                # Concatenamos la cabecera (primera fila) con las filas ordenadas
+                inventario_ordenado[1:] = productos_a_ordenar
+
+                # Convertimos el inventario_ordenado en una cadena de texto con formato
+                inventario_ordenado_str = np.array2string(inventario_ordenado, separator=" | ", formatter={'all': lambda x: f"{x}"},)
+
+                print("Inventario original:")
+                print(inventario_existente)
+
+                print("\nInventario ordenado con Bubble Sort:")
+                print(inventario_ordenado_str)
+
+
+
+
+
+
+
+            
+           
+
+
+
+
+
+
+  
+            
+            
+            
+            
+            # while True:
+            #     seguir_finalizar = input("""                                                        Deseas realizar otra operación?
                                                             
-                                                        1.- Si!, Volver al menu de opciones 
-                                                        2.- No!, Guardar cambios y cerrar el programa
-                                                        --> """)
-                if seguir_finalizar != "1" or seguir_finalizar != "2":
-                    print(" ")
-                    print("                                                   ###Opción no valida, intenta otra vez###")
-                    print(" ")
-                
-                if seguir_finalizar == "1":
-                    break
-                
-                if seguir_finalizar == "2":
-                    print(" ")
-                    print("""                                                          ¡Adios, vuelve pronto!""")
-                    break
+            #                                             1.- Si!, Volver al menu de opciones 
+            #                                             2.- No!, Guardar cambios y cerrar el programa
+            #                                             --> """)
                 
                 
-        
-        if seguir_finalizar == "2":
-            break    
+                
+            #     if seguir_finalizar == "1":
+            #         break
+                
+            #     if seguir_finalizar == "2":
+            #         print(" ")
+            #         print("""                                                         ¡Adios, vuelve pronto!""")
+            #         break
+                
+            #     if seguir_finalizar != "1" or seguir_finalizar != "2":
+            #         print(" ")
+            #         print("                                                   ###Opción no valida, intenta otra vez###")
+            #         print(" ")
+                
+            # if seguir_finalizar == "2":
+            #     print(" ")
+            #     break    
         
         #OPCIÓN 2
         if opciones == "2":
-            
-            eleccion = input("""                                          Ingrese el nombre del producto
-                                                            -->""")
-            eleccion = eleccion.capitalize()
-        
-        #OPCIÓN 3
-        if opciones == "3":
-            return 0
-        
-        #OPCIÓN 4
-        if opciones == "4":
-            return 0
-        
-        
-        if opciones != "1" or opciones != "2" or opciones != "3" or opciones != "4":
             print(" ")
-            print("                                                        ###Opcion invalida, intenta otra vez###")
-            print(" ")
+            tipo_busqueda = input()
             
+            
+            
+            # print(" ")
+            # eleccion = input("""                                                         Ingrese el nombre del producto
+            #                                             --> """)
+            # eleccion = eleccion.capitalize()
+            
+            # productos_coincidentes = []
+            
+            
+            # for producto in range(1, inventario_existente):
+            #     if eleccion == producto[0]:
+            #         productos_coincidentes = productos_coincidentes.append(productos_coincidentes)
+                
+            # print(productos_coincidentes)
         
         
         
-        
-    
-    
         
 inventario()
         
