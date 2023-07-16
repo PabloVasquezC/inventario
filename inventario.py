@@ -88,7 +88,7 @@ def inventario():
         if opciones == "1" :
             print(" ")
             
-            #ALGORITMOS DE ORDENAMIENTO
+            #INPUT ALGORITMO DE ORDENAMIENTO
             ordenar_por = input("""                                                             VER INVENTARIO POR:
                                 
                                 
@@ -96,9 +96,10 @@ def inventario():
                                                             2.- Cantidad en Stock 
                                                             --> """)
             
+            #ORDENAMIENTO BURBUJA
             if ordenar_por == "1":
                 
-                def bubble_sort_alphabetically(array):
+                def ordenamiento_burbuja(array):
                     n = len(array)
                     for i in range(n - 1):
                         for j in range(n - i - 1):
@@ -113,7 +114,7 @@ def inventario():
                 first_list = inventario_existente[0]
 
                 # Ordenamos las listas alfabéticamente basándonos en el primer índice
-                bubble_sort_alphabetically(inventario_existente[1:])
+                ordenamiento_burbuja(inventario_existente[1:])
 
                 # Volvemos a colocar la primera lista en la parte superior
                 sorted_inventario = np.vstack((first_list, inventario_existente[1:]))
@@ -150,25 +151,33 @@ def inventario():
                 print(inventario_centado)
                 print(" ")
                 
-        #BUBBLE SORT
+        
+        #ORDENAMIENTO DE INSERSION
         if ordenar_por == "2":
             
-            def bubble_sort(array):
-                    n = len(array)
-                    for i in range(n - 1):
-                        for j in range(n - i - 1):
-                            # Comparamos el primer índice de cada lista (el que determina el orden alfabético)
-                            if array[j][-1] > array[j + 1][-1]:
-                                # Intercambiamos todas las columnas de las listas utilizando una variable auxiliar
-                                temp = np.copy(array[j])
-                                array[j] = np.copy(array[j + 1])
-                                array[j + 1] = np.copy(temp)
+            def ordenamiento_por_insercion(array):
+                n = array.shape[0]
+                for i in range(1, n):
+                    # Guardamos el elemento actual en una variable temporal
+                    current_element = np.copy(array[i])
+                    # Inicializamos un índice para comparar con los elementos anteriores
+                    j = i - 1
+
+                    # Desplazamos los elementos mayores que el actual hacia adelante
+                    # hasta encontrar la posición correcta para insertar el elemento actual
+                    while j >= 0 and current_element[-1] < array[j][-1]:
+                        array[j + 1] = np.copy(array[j])
+                        j -= 1
+
+                    # Insertamos el elemento actual en su posición correcta
+                    array[j + 1] = np.copy(current_element)
+
 
             # Identificamos la primera lista
             first_list = inventario_existente[0]
 
             # Ordenamos las listas alfabéticamente basándonos en el primer índice
-            bubble_sort(inventario_existente[1:])
+            ordenamiento_por_insercion(inventario_existente[1:])
 
             # Volvemos a colocar la primera lista en la parte superior
             sorted_inventario = np.vstack((first_list, inventario_existente[1:]))
